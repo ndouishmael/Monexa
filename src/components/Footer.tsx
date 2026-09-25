@@ -2,36 +2,31 @@ import { Link } from 'react-router-dom'
 import Logo from './Logo'
 import { nav, site } from '../data/site'
 import { products } from '../data/products'
-import { IconMail } from './Icons'
+import { IconArrowRight, IconMail } from './Icons'
 
 export default function Footer() {
-  const year = new Date().getFullYear()
-
   return (
-    <footer className="relative mt-24 overflow-hidden bg-ink-950 text-ink-100">
-      <div className="pointer-events-none absolute inset-0 bg-grid-dark opacity-60" aria-hidden="true" />
-      <div className="pointer-events-none absolute -top-24 right-0 h-64 w-64 rounded-full bg-brand-teal/10 blur-3xl" aria-hidden="true" />
-      <div className="relative container-page py-16">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-ink-950 text-white">
+      <div className="pointer-events-none absolute inset-0 bg-grid-dark opacity-50" aria-hidden="true" />
+      <div className="relative container-page py-14 md:py-20">
+        <div className="grid gap-12 lg:grid-cols-[1.35fr_0.8fr_0.9fr_1fr]">
           <div>
-            <div className="inline-flex rounded-lg bg-white p-3">
-              <Logo plain className="block h-8" />
+            <div className="inline-flex border border-white/10 bg-white">
+              <Logo plain light />
             </div>
-            <p className="mt-5 max-w-xs text-lg font-semibold text-white">Monexa</p>
-            <p className="mt-1 max-w-xs text-sm text-ink-300">
-              {site.tagline}
-            </p>
-            <p className="mt-6 max-w-xs text-sm text-ink-400">
-              Built in South Africa. Local understanding, global ambition.
+            <p className="mt-6 text-xl font-semibold text-white">Monexa</p>
+            <p className="mt-2 text-sm text-ink-300">{site.tagline}</p>
+            <p className="mt-6 max-w-xs text-sm leading-6 text-ink-400">
+              A software engineering company with South African roots and global ambition.
             </p>
           </div>
 
-          <nav aria-label="Footer navigation">
-            <h2 className="font-mono text-xs uppercase tracking-[0.18em] text-ink-400">Company</h2>
-            <ul className="mt-4 space-y-3 text-sm">
+          <nav aria-label="Company links">
+            <h2 className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-500">Company</h2>
+            <ul className="mt-5 space-y-3 text-sm">
               {nav.map((item) => (
                 <li key={item.to}>
-                  <Link to={item.to} className="text-ink-200 transition-colors hover:text-white">
+                  <Link to={item.to} className="text-ink-300 transition-colors hover:text-white">
                     {item.label}
                   </Link>
                 </li>
@@ -39,54 +34,49 @@ export default function Footer() {
             </ul>
           </nav>
 
-          <nav aria-label="Products navigation">
-            <h2 className="font-mono text-xs uppercase tracking-[0.18em] text-ink-400">Products</h2>
-            <ul className="mt-4 space-y-3 text-sm">
-              {products.map((p) => (
-                <li key={p.slug}>
+          <nav aria-label="Product links">
+            <h2 className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-500">Products</h2>
+            <ul className="mt-5 space-y-3 text-sm">
+              {products.map((product) => (
+                <li key={product.slug}>
                   <Link
-                    to={`/products/${p.slug}`}
-                    className="text-ink-200 transition-colors hover:text-white"
+                    to={`/products/${product.slug}`}
+                    className="text-ink-300 transition-colors hover:text-white"
                   >
-                    {p.name}
+                    {product.name}
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link to="/products" className="text-ink-400 transition-colors hover:text-white">
-                  All products
-                </Link>
-              </li>
             </ul>
+            <Link
+              to="/products"
+              className="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-brand-teal hover:text-white"
+            >
+              Product portfolio
+              <IconArrowRight className="h-3.5 w-3.5" />
+            </Link>
           </nav>
 
           <div>
-            <h2 className="font-mono text-xs uppercase tracking-[0.18em] text-ink-400">Contact</h2>
-            <ul className="mt-4 space-y-3 text-sm">
-              <li>
-                <a
-                  href={`mailto:${site.email}`}
-                  className="inline-flex items-center gap-2 text-ink-200 transition-colors hover:text-white"
-                >
-                  <IconMail className="h-4 w-4 text-brand-teal" />
-                  {site.email}
-                </a>
-              </li>
-              <li className="text-ink-400">South Africa</li>
-              <li>
-                <Link to="/contact" className="text-brand-teal transition-colors hover:text-white">
-                  Speak to us →
-                </Link>
-              </li>
-            </ul>
+            <h2 className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-500">Contact</h2>
+            <a
+              href={`mailto:${site.email}`}
+              className="mt-5 inline-flex items-center gap-2 text-sm text-ink-300 transition-colors hover:text-white"
+            >
+              <IconMail className="h-4 w-4 text-brand-teal" />
+              {site.email}
+            </a>
+            <p className="mt-3 text-sm text-ink-400">{site.location}</p>
+            <Link to="/contact" className="btn mt-6 border border-white/20 text-white hover:bg-white/10">
+              Speak to us
+              <IconArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-ink-400 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} Monexa. All rights reserved.</p>
-          <p className="font-mono uppercase tracking-[0.18em] text-ink-500">
-            Where Software Meets Substance.
-          </p>
+        <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-ink-500 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Monexa. All rights reserved.</p>
+          <p className="font-mono uppercase tracking-[0.16em]">Where Software Meets Substance.</p>
         </div>
       </div>
     </footer>

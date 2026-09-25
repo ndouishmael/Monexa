@@ -1,184 +1,182 @@
 export type Product = {
-  slug: string
+  slug: 'touchmed24' | 'ledger-and-saldo' | 'the-eye'
   name: string
   category: string
+  sector: string
   tagline?: string
   relationship: string
-  status: string
+  status: 'In development'
   short: string
   summary: string
   problem: string[]
   audience: string[]
   capabilities: { title: string; description: string }[]
-  accent: 'blue' | 'teal' | 'mixed'
+  image: string
+  imageAlt: string
+  imageWidth: number
+  imageHeight: number
 }
 
 export const products: Product[] = [
   {
     slug: 'touchmed24',
     name: 'TouchMed24',
-    category: 'Healthcare Technology / Practice Management',
-    relationship: 'A Product of Monexa.inc',
+    category: 'Healthcare technology / medical practice management',
+    sector: 'Healthcare systems',
+    relationship: 'TouchMed24 — A Product of Monexa.inc',
     status: 'In development',
     short:
-      'A healthcare technology platform designed to help medical practices run their day-to-day operations with less friction.',
+      'Medical practice management software designed to bring clinical and administrative workflows into one coherent system.',
     summary:
-      'TouchMed24 is a healthcare technology and medical practice management platform being developed by Monexa. It is designed to bring the moving parts of a practice — patients, consultations, medical-aid workflows and administration — into one coherent system, so clinical teams can spend more time on care and less on paperwork.',
+      'TouchMed24 is healthcare technology and medical practice management software being developed by Monexa. It is designed to bring the moving parts of a practice — patients, consultations, medical-aid workflows and administration — into one coherent system.',
     problem: [
-      'Medical practices juggle patient records, scheduling, medical-aid rules and billing across disconnected tools and manual processes.',
-      'Eligibility checks, claims and administration are time-consuming and error-prone when handled in isolation.',
-      'Practice staff need a single, dependable view of operations rather than fragmented systems that do not talk to each other.',
+      'Medical practices often coordinate patient records, scheduling, medical-aid workflows and billing across disconnected tools and manual processes.',
+      'Eligibility checks, claims and administration can become time-consuming and error-prone when handled in isolation.',
+      'Practice teams need a dependable operational view instead of fragmented systems that do not work together.',
     ],
     audience: [
       'Medical and healthcare practices',
-      'Practice managers and administrative staff',
-      'Clinicians who need workflows that support, not slow, patient care',
+      'Practice managers and administrative teams',
+      'Clinicians who need supportive, practical workflows',
     ],
     capabilities: [
       {
         title: 'Patient management',
-        description:
-          'A structured, secure foundation for patient information and records across the practice.',
+        description: 'A structured foundation for patient information and records across the practice.',
       },
       {
         title: 'Practice operations',
-        description:
-          'Tools intended to coordinate the day-to-day running of a practice in one place.',
+        description: 'Tools designed to coordinate the day-to-day running of a medical practice.',
       },
       {
-        title: 'Consultations',
-        description:
-          'Support for the consultation workflow so clinical time is spent on care, not admin.',
+        title: 'Consultation workflows',
+        description: 'Support for consultation workflows that keeps clinical work and administration connected.',
       },
       {
-        title: 'Medical-aid workflows & eligibility',
-        description:
-          'Designed to streamline medical-aid processes and eligibility so they are less manual.',
+        title: 'Medical-aid workflows',
+        description: 'Designed to make medical-aid and eligibility processes less manual.',
       },
       {
-        title: 'Billing & claims',
-        description:
-          'Intended to make billing and claims more consistent and less error-prone.',
+        title: 'Billing and claims',
+        description: 'A consistent workflow for billing and claims administration.',
       },
       {
         title: 'Practice administration',
-        description:
-          'Administrative tooling that ties the practice together into a coherent system.',
+        description: 'Administrative tooling intended to connect the operational parts of a practice.',
       },
     ],
-    accent: 'blue',
+    image: '/images/touchmed24-dashboard.png',
+    imageAlt: 'TouchMed24 medical practice management dashboard interface',
+    imageWidth: 1792,
+    imageHeight: 1008,
   },
   {
     slug: 'ledger-and-saldo',
     name: 'Ledger & Saldo',
-    category: 'Financial Software / Accounting & Financial Management',
+    category: 'Accounting and financial management software',
+    sector: 'Financial systems',
     tagline: 'Find your balance.',
-    relationship: 'A software product being developed by Monexa',
+    relationship: 'A Monexa software product',
     status: 'In development',
     short:
-      'A financial software and accounting platform designed to give businesses a clear, dependable picture of their finances.',
+      'Financial software designed to give businesses a clear, dependable view of accounts, cash flow and financial activity.',
     summary:
-      'Ledger & Saldo is a financial software and accounting platform being developed by Monexa. It is designed to help businesses keep accurate financial records, understand their cash flow and manage the relationships — customers, suppliers and accounts — that sit behind every number.',
+      'Ledger & Saldo is accounting and financial management software being developed by Monexa. It is designed to help businesses keep structured financial records, understand cash flow and manage the relationships behind every number.',
     problem: [
-      'Businesses often manage accounting, invoicing and financial records across spreadsheets and tools that do not reconcile cleanly.',
-      'Understanding real cash flow and financial position can be slow, manual and unclear.',
-      'Financial data, customers, suppliers and accounts need to live in one dependable system to be genuinely useful.',
+      'Businesses can end up managing accounting, invoicing and financial records across spreadsheets and tools that do not reconcile cleanly.',
+      'Understanding cash flow and financial position can be slow, manual and unclear.',
+      'Financial data, customers, suppliers and accounts need a coherent system to become genuinely useful.',
     ],
     audience: [
       'Small and growing businesses',
       'Finance and accounting teams',
-      'Owners who need a clear view of financial health',
+      'Business owners who need a clear view of financial health',
     ],
     capabilities: [
       {
         title: 'Accounting',
-        description:
-          'A structured core for accounting built around accuracy and clarity.',
+        description: 'A structured accounting core designed around accuracy and clarity.',
       },
       {
         title: 'Financial management',
-        description:
-          'Designed to help businesses manage their finances with confidence.',
+        description: 'Tools intended to help businesses understand and manage their finances.',
       },
       {
-        title: 'Customers & suppliers',
-        description:
-          'Keep the relationships behind the numbers organised in one place.',
+        title: 'Customers and suppliers',
+        description: 'Keep the relationships behind the numbers organised in one place.',
       },
       {
         title: 'Accounts',
-        description:
-          'A dependable structure for accounts and financial records.',
+        description: 'A dependable structure for accounts and financial records.',
       },
       {
         title: 'Reporting',
-        description:
-          'Reporting intended to turn financial records into understandable insight.',
+        description: 'Reporting designed to turn financial records into understandable insight.',
       },
       {
         title: 'Cash flow',
-        description:
-          'Designed to make cash flow visible and easier to plan around.',
+        description: 'Designed to make cash movement visible and easier to plan around.',
       },
     ],
-    accent: 'teal',
+    image: '/images/ledger-saldo-dashboard.png',
+    imageAlt: 'Ledger and Saldo accounting and financial management dashboard interface',
+    imageWidth: 1792,
+    imageHeight: 1008,
   },
   {
     slug: 'the-eye',
     name: 'The Eye',
-    category: 'Network & Infrastructure Monitoring',
-    relationship: 'A software product being developed by Monexa',
+    category: 'Network and infrastructure monitoring software',
+    sector: 'Infrastructure systems',
+    relationship: 'A Monexa software product',
     status: 'In development',
     short:
-      'A network and infrastructure monitoring platform designed to give teams clear visibility into their environments.',
+      'Monitoring software designed to give technical teams a coherent view of network topology, performance and infrastructure health.',
     summary:
-      'The Eye is a network and infrastructure monitoring platform being developed by Monexa. It is designed to give teams clear visibility into their network and infrastructure — from topology and devices through to performance, links and alarms — so problems can be understood before they become outages.',
+      'The Eye is network and infrastructure monitoring software being developed by Monexa. It is designed to give technical teams clear visibility into topology, devices, performance, links and alarms across their environments.',
     problem: [
-      'Infrastructure and network environments are complex, and visibility is often scattered across tools.',
-      'Teams need to understand topology, performance and the health of links and devices in one place.',
-      'Without clear monitoring and alarms, problems are discovered late rather than anticipated.',
+      'Network and infrastructure environments are complex, while visibility is often scattered across different tools.',
+      'Technical teams need to understand topology, performance and the health of links and devices in one place.',
+      'Without clear monitoring and alarms, problems can be discovered late rather than understood early.',
     ],
     audience: [
       'Technical and operations teams',
-      'Organisations running their own network and infrastructure',
-      'Teams that need dependable visibility rather than guesswork',
+      'Organisations managing network and infrastructure environments',
+      'Teams that need dependable operational visibility',
     ],
     capabilities: [
       {
         title: 'Infrastructure monitoring',
-        description:
-          'A foundation for monitoring the infrastructure teams depend on.',
+        description: 'A foundation for monitoring the infrastructure an organisation depends on.',
       },
       {
         title: 'Network visibility',
-        description:
-          'Designed to bring network visibility into a single, clear view.',
+        description: 'Designed to bring network state into a clear, unified view.',
       },
       {
         title: 'Topology',
-        description:
-          'Understand how the environment is connected through topology.',
+        description: 'A visual model of how devices and network components are connected.',
       },
       {
         title: 'Alarms',
-        description:
-          'Alarms intended to surface problems early rather than late.',
+        description: 'Operational alarms designed to surface relevant problems clearly.',
       },
       {
-        title: 'Performance & links',
-        description:
-          'Insight into performance and the health of links across the network.',
+        title: 'Performance and links',
+        description: 'Insight into performance and the health of links across the network.',
       },
       {
-        title: 'Network devices & reporting',
-        description:
-          'Visibility into devices with reporting that supports real decisions.',
+        title: 'Devices and reporting',
+        description: 'Device visibility with reporting intended to support operational decisions.',
       },
     ],
-    accent: 'mixed',
+    image: '/images/the-eye-dashboard.png',
+    imageAlt: 'The Eye network and infrastructure monitoring dashboard interface',
+    imageWidth: 1792,
+    imageHeight: 1008,
   },
 ]
 
 export function getProduct(slug: string): Product | undefined {
-  return products.find((p) => p.slug === slug)
+  return products.find((product) => product.slug === slug)
 }

@@ -17,26 +17,27 @@ export default function SectionHeading({
   className = '',
 }: Props) {
   const centered = align === 'center'
+
   return (
-    <div
-      className={`${centered ? 'mx-auto max-w-2xl text-center' : 'max-w-2xl'} ${className}`}
-    >
+    <div className={`${centered ? 'mx-auto max-w-3xl text-center' : 'max-w-3xl'} ${className}`}>
       {eyebrow && (
         <Reveal>
           <p className={`eyebrow ${centered ? 'justify-center' : ''}`}>
-            <span className="h-px w-6 bg-brand-blue" />
+            <span className="h-px w-7 bg-brand-blue" />
             {eyebrow}
           </p>
         </Reveal>
       )}
-      <Reveal delay={80}>
-        <h2 className="mt-4 text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl">
+      <Reveal delay={60}>
+        <h2 className="mt-5 text-3xl font-semibold leading-tight text-ink-950 sm:text-4xl lg:text-[2.75rem]">
           {title}
         </h2>
       </Reveal>
       {intro && (
-        <Reveal delay={140}>
-          <p className="mt-4 text-lg leading-relaxed text-ink-600 text-pretty">{intro}</p>
+        <Reveal delay={110}>
+          <p className="mt-5 max-w-2xl text-base leading-7 text-ink-600 text-pretty sm:text-lg sm:leading-8">
+            {intro}
+          </p>
         </Reveal>
       )}
     </div>

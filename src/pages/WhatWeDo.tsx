@@ -4,7 +4,7 @@ import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
 import SectionHeading from '../components/SectionHeading'
 import CtaBand from '../components/CtaBand'
-import { capabilities, process } from '../data/content'
+import { capabilities } from '../data/content'
 import {
   IconArrowRight,
   IconCheck,
@@ -14,25 +14,25 @@ import {
   IconRefresh,
 } from '../components/Icons'
 
-const capIcons = [IconCode, IconLayers, IconLink, IconRefresh]
+const capabilityIcons = [IconCode, IconLayers, IconLink, IconRefresh]
 
 export default function WhatWeDo() {
   return (
     <>
       <Seo
         title="What We Do"
-        description="Monexa engineers custom software around real business requirements — custom software engineering, product engineering, systems & integrations, and modernisation."
+        description="Monexa provides custom software engineering, product engineering, systems integration and software modernisation."
         path="/what-we-do"
       />
 
       <PageHero
         eyebrow="What we do"
-        title={<>Software engineering, from the problem up.</>}
+        title={<>Custom software engineering, from the problem up.</>}
         intro={
           <>
-            Monexa is, first and foremost, a software engineering company. We work with
-            businesses to understand real problems and engineer software that fits how they
-            actually work — designed with architecture and discipline, built to last.
+            We work with businesses to understand real requirements and engineer software around
+            them. Architecture, interface and implementation are treated as one connected system
+            — designed to be useful now and maintainable over time.
           </>
         }
       >
@@ -41,36 +41,37 @@ export default function WhatWeDo() {
             Speak to us
             <IconArrowRight className="h-4 w-4" />
           </Link>
-          <Link to="/how-we-work" className="btn-ghost">
-            See how we work
-          </Link>
+          <Link to="/how-we-work" className="btn-ghost">How we work</Link>
         </div>
       </PageHero>
 
-      {/* Capabilities detail */}
-      <section className="container-page py-16 md:py-24">
+      <section className="container-page section-space">
         <SectionHeading
           eyebrow="Core capabilities"
-          title="Four capabilities that cover what businesses actually need."
-          intro="We keep our offering focused and honest: this is the engineering work we do."
+          title="Focused engineering capabilities for real business systems."
+          intro="Custom engineering is our centre of gravity. The capabilities around it help move software from idea to dependable system."
         />
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          {capabilities.map((cap, i) => {
-            const Icon = capIcons[i]
+
+        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+          {capabilities.map((capability, index) => {
+            const Icon = capabilityIcons[index]
             return (
-              <Reveal key={cap.id} delay={(i % 2) * 100}>
-                <article className="card card-hover flex h-full flex-col">
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-blue/10 to-brand-teal/10 text-brand-blue">
+              <Reveal key={capability.id} delay={(index % 2) * 70} className="h-full">
+                <article className="group h-full border border-ink-100 bg-white p-7 transition hover:border-ink-300 sm:p-8">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex h-12 w-12 items-center justify-center bg-ink-950 text-white">
                       <Icon className="h-6 w-6" />
                     </div>
-                    <h3 className="text-xl font-bold text-ink-900">{cap.title}</h3>
+                    <span className="font-mono text-[10px] text-ink-300">
+                      CAPABILITY / 0{index + 1}
+                    </span>
                   </div>
-                  <p className="mt-4 text-ink-600 text-pretty">{cap.summary}</p>
-                  <ul className="mt-5 space-y-3 border-t border-ink-100 pt-5">
-                    {cap.points.map((point) => (
-                      <li key={point} className="flex items-start gap-3 text-sm text-ink-700">
-                        <IconCheck className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal" />
+                  <h2 className="mt-8 text-2xl font-semibold text-ink-950">{capability.title}</h2>
+                  <p className="mt-3 leading-7 text-ink-600">{capability.summary}</p>
+                  <ul className="mt-7 space-y-3 border-t border-ink-100 pt-6">
+                    {capability.points.map((point) => (
+                      <li key={point} className="flex items-start gap-3 text-sm leading-6 text-ink-700">
+                        <IconCheck className="mt-1 h-4 w-4 shrink-0 text-brand-teal" />
                         <span>{point}</span>
                       </li>
                     ))}
@@ -82,70 +83,83 @@ export default function WhatWeDo() {
         </div>
       </section>
 
-      {/* Two-sided model */}
-      <section className="border-y border-ink-100 bg-ink-50/40">
-        <div className="container-page py-16 md:py-24">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
+      <section className="border-y border-ink-100 bg-ink-50">
+        <div className="container-page section-space">
+          <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
             <div>
-              <SectionHeading
-                eyebrow="How we're set up"
-                title="We engineer for others — and for ourselves."
-                intro="The same engineering discipline runs through everything we do, whether we are building for a business or building our own products."
-              />
-              <div className="mt-8 space-y-4">
-                <div className="rounded-xl border border-ink-100 bg-white p-5">
-                  <h3 className="font-bold text-ink-900">For businesses</h3>
-                  <p className="mt-1.5 text-sm text-ink-600">
-                    We partner with you to understand a real problem and engineer software
-                    around it — from a single system to an ongoing engineering relationship.
-                  </p>
-                </div>
-                <div className="rounded-xl border border-ink-100 bg-white p-5">
-                  <h3 className="font-bold text-ink-900">For our own products</h3>
-                  <p className="mt-1.5 text-sm text-ink-600">
-                    We identify problems worth solving and build our own software products —
-                    currently in development across healthcare, finance and infrastructure.
-                  </p>
-                  <Link
-                    to="/products"
-                    className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-ink-900 hover:text-brand-teal"
-                  >
-                    Explore our products
-                    <IconArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </div>
+              <p className="rule-label">How the work connects</p>
+              <h2 className="mt-5 text-3xl font-semibold text-ink-950 sm:text-4xl">
+                A system, not a collection of deliverables.
+              </h2>
+              <p className="mt-5 max-w-xl text-lg leading-8 text-ink-600">
+                Business logic, data, interfaces and operations affect one another. We design
+                those relationships deliberately so the software can work as a coherent whole.
+              </p>
+              <Link to="/how-we-work" className="btn-primary mt-8">
+                See our engineering workflow
+                <IconArrowRight className="h-4 w-4" />
+              </Link>
             </div>
 
-            <Reveal delay={120}>
-              <div className="rounded-2xl border border-ink-100 bg-white p-8">
-                <p className="eyebrow">
-                  <span className="h-px w-6 bg-brand-blue" />
-                  Our engineering workflow
-                </p>
-                <ol className="mt-6 space-y-1">
-                  {process.map((stage, i) => (
-                    <li key={stage.index} className="flex items-center gap-4 py-2">
-                      <span className="flex h-8 w-8 items-center justify-center rounded-md bg-ink-900 font-mono text-xs text-white">
-                        {stage.index}
-                      </span>
-                      <span className="font-semibold text-ink-800">{stage.title}</span>
-                      {i < process.length - 1 && (
-                        <span className="ml-auto font-mono text-ink-300">↓</span>
-                      )}
-                    </li>
+            <Reveal delay={100}>
+              <div className="technical-panel bg-grid-fine p-6 sm:p-8">
+                <div className="flex items-center justify-between border-b border-ink-100 pb-4">
+                  <span className="system-label">System view / conceptual</span>
+                  <span className="inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.14em] text-brand-tealdark">
+                    <span className="h-1.5 w-1.5 rounded-full bg-brand-teal" />
+                    Connected
+                  </span>
+                </div>
+                <div className="relative mt-8 grid grid-cols-2 gap-8 sm:grid-cols-3">
+                  <div className="absolute left-[16%] right-[16%] top-1/2 h-px bg-ink-200" aria-hidden="true" />
+                  {[
+                    ['Interface', 'Human workflow'],
+                    ['Application', 'Business logic'],
+                    ['Data', 'Information model'],
+                    ['Integration', 'System exchange'],
+                    ['Platform', 'Runtime foundation'],
+                    ['Operations', 'Observe and evolve'],
+                  ].map(([title, detail], index) => (
+                    <div key={title} className="relative z-10 border border-ink-200 bg-white p-4">
+                      <span className="font-mono text-[9px] text-brand-blue">N{index + 1}</span>
+                      <h3 className="mt-4 text-sm font-semibold text-ink-950">{title}</h3>
+                      <p className="mt-1 text-[11px] text-ink-500">{detail}</p>
+                    </div>
                   ))}
-                </ol>
-                <Link
-                  to="/how-we-work"
-                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-ink-900 hover:text-brand-blue"
-                >
-                  See the full process
-                  <IconArrowRight className="h-4 w-4" />
-                </Link>
+                </div>
               </div>
             </Reveal>
           </div>
+        </div>
+      </section>
+
+      <section className="container-page section-space">
+        <div className="grid gap-8 lg:grid-cols-2">
+          <Reveal>
+            <article className="h-full border-t-2 border-brand-blue bg-ink-50 p-7 sm:p-9">
+              <span className="system-label">Engineering for businesses</span>
+              <h2 className="mt-5 text-2xl font-semibold text-ink-950">Built around your context.</h2>
+              <p className="mt-4 leading-7 text-ink-600">
+                We work to understand the process, constraint or opportunity before deciding what
+                software should exist. The result may be a focused application, a connected system
+                or a longer-term product engineering effort.
+              </p>
+            </article>
+          </Reveal>
+          <Reveal delay={80}>
+            <article className="h-full border-t-2 border-brand-teal bg-ink-50 p-7 sm:p-9">
+              <span className="system-label">Engineering our products</span>
+              <h2 className="mt-5 text-2xl font-semibold text-ink-950">The same discipline, owned by Monexa.</h2>
+              <p className="mt-4 leading-7 text-ink-600">
+                We apply the same system thinking to products we are building across healthcare,
+                financial management and infrastructure monitoring.
+              </p>
+              <Link to="/products" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-blue">
+                Explore the product portfolio
+                <IconArrowRight className="h-4 w-4" />
+              </Link>
+            </article>
+          </Reveal>
         </div>
       </section>
 

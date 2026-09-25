@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react'
+import { useState, type ChangeEvent, type FormEvent, type ReactNode } from 'react'
 import Seo from '../components/Seo'
 import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
@@ -6,29 +6,40 @@ import { site } from '../data/site'
 import { IconArrowRight, IconCheck, IconMail } from '../components/Icons'
 
 const topics = [
-  'Custom software',
-  'Product development',
-  'A software idea',
-  'A technology problem',
+  'Custom software engineering',
+  'Product engineering',
+  'Systems and integrations',
+  'Software modernisation',
+  'A product idea',
   'Potential collaboration',
 ]
 
+type FormState = {
+  name: string
+  email: string
+  company: string
+  topic: string
+  message: string
+}
+
+const initialForm: FormState = {
+  name: '',
+  email: '',
+  company: '',
+  topic: topics[0],
+  message: '',
+}
+
 export default function Contact() {
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    company: '',
-    topic: topics[0],
-    message: '',
-  })
-  const [submitted, setSubmitted] = useState(false)
+  const [form, setForm] = useState(initialForm)
+  const [prepared, setPrepared] = useState(false)
 
-  const update = (key: keyof typeof form) => (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
-  ) => setForm((f) => ({ ...f, [key]: e.target.value }))
+  const update = (key: keyof FormState) => (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) => setForm((current) => ({ ...current, [key]: event.target.value }))
 
-  const buildMailto = () => {
-    const subject = `Monexa enquiry — ${form.topic}${form.company ? ` (${form.company})` : ''}`
+  const createMailto = () => {
+    const subject = `Monexa enquiry — ${form.topic}${form.company ? ` — ${form.company}` : ''}`
     const body = [
       `Name: ${form.name}`,
       `Email: ${form.email}`,
@@ -39,102 +50,96 @@ export default function Contact() {
     ]
       .filter(Boolean)
       .join('\n')
-    return `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
-      body,
-    )}`
+
+    return `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
   }
 
-  const onSubmit = (e: FormEvent) => {
-    e.preventDefault()
-    // NOTE: No email backend is configured yet. Rather than pretend the form
-    // sends email from a server, we open the visitor's own mail client with the
-    // message pre-filled. The form UI is ready to be connected to a backend later.
-    setSubmitted(true)
-    window.location.href = buildMailto()
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    setPrepared(true)
+    window.location.href = createMailto()
   }
 
   return (
     <>
       <Seo
         title="Contact"
-        description="Have a problem worth solving? Speak to Monexa about custom software, product development, software ideas, technology problems or potential collaboration."
+        description="Speak to Monexa about custom software engineering, product development, systems integration or a technology problem worth solving."
         path="/contact"
       />
 
       <PageHero
         eyebrow="Contact"
-        title={<>Have a problem worth solving?</>}
+        title={<>Bring us a problem worth understanding.</>}
         intro={
           <>
-            Tell us what you are trying to build, fix or figure out. Businesses can speak to
-            Monexa about custom software, product development, software ideas, technology
-            problems and potential collaboration.
+            Tell us what you are trying to build, improve or connect. We start by understanding
+            the problem and the context before talking about a software solution.
           </>
         }
       />
 
-      <section className="container-page py-16 md:py-24">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr]">
-          {/* Left: details */}
+      <section className="container-page section-space">
+        <div className="grid gap-14 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
           <Reveal>
             <div>
-              <h2 className="text-2xl font-bold text-ink-900">Speak to us</h2>
-              <p className="mt-3 max-w-md text-ink-600 text-pretty">
-                We would like to understand the problem before we talk about software. Share a
-                little about what you are working on and we will take it from there.
+              <p className="rule-label">Speak to us</p>
+              <h2 className="mt-5 text-3xl font-semibold text-ink-950">Start with the context.</h2>
+              <p className="mt-5 max-w-md leading-7 text-ink-600">
+                A useful first conversation is about the business, the people and what needs to
+                change. Share enough for us to understand where to begin.
               </p>
 
-              <div className="mt-8 space-y-4">
+              <div className="mt-9 border-y border-ink-100">
                 <a
                   href={`mailto:${site.email}`}
-                  className="card card-hover flex items-center gap-4"
+                  className="group flex items-center gap-4 py-5"
                 >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-blue/10 text-brand-blue">
+                  <span className="flex h-11 w-11 items-center justify-center bg-ink-950 text-white">
                     <IconMail className="h-5 w-5" />
                   </span>
                   <span>
-                    <span className="block font-mono text-xs uppercase tracking-wider text-ink-400">
-                      Email
+                    <span className="system-label">Email</span>
+                    <span className="mt-1 block text-sm font-semibold text-ink-950 group-hover:text-brand-blue">
+                      {site.email}
                     </span>
-                    <span className="block font-semibold text-ink-900">{site.email}</span>
                   </span>
                 </a>
-
-                <div className="card flex items-center gap-4">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-teal/10 text-brand-teal">
+                <div className="flex items-center gap-4 border-t border-ink-100 py-5">
+                  <span className="flex h-11 w-11 items-center justify-center border border-ink-200 bg-white text-brand-tealdark">
                     <IconCheck className="h-5 w-5" />
                   </span>
                   <span>
-                    <span className="block font-mono text-xs uppercase tracking-wider text-ink-400">
-                      Based in
-                    </span>
-                    <span className="block font-semibold text-ink-900">South Africa</span>
+                    <span className="system-label">Based in</span>
+                    <span className="mt-1 block text-sm font-semibold text-ink-950">{site.location}</span>
                   </span>
                 </div>
               </div>
 
-              <div className="mt-8 rounded-xl border border-ink-100 bg-ink-50/50 p-5 text-sm text-ink-600">
-                <p>
-                  <span className="font-semibold text-ink-800">What to expect:</span> a real
-                  conversation about the problem. We are a young company and we would rather be
-                  clear and honest than oversell.
+              <div className="mt-8 border-l-2 border-brand-teal bg-ink-50 p-5">
+                <p className="text-sm leading-6 text-ink-600">
+                  <strong className="font-semibold text-ink-900">No automated backend yet.</strong>{' '}
+                  This interface prepares an email in your own mail application. It does not claim
+                  to submit or deliver data through a Monexa server.
                 </p>
               </div>
             </div>
           </Reveal>
 
-          {/* Right: form */}
-          <Reveal delay={120}>
-            <form
-              onSubmit={onSubmit}
-              className="rounded-2xl border border-ink-100 bg-white p-6 sm:p-8"
-              noValidate
-            >
-              <div className="grid gap-5 sm:grid-cols-2">
-                <div className="sm:col-span-1">
-                  <label htmlFor="name" className="mb-1.5 block text-sm font-semibold text-ink-800">
-                    Name <span className="text-brand-blue">*</span>
-                  </label>
+          <Reveal delay={90}>
+            <form onSubmit={onSubmit} className="border border-ink-100 bg-white p-6 sm:p-8 lg:p-10">
+              <div className="flex items-center justify-between border-b border-ink-100 pb-5">
+                <div>
+                  <p className="system-label">Enquiry interface</p>
+                  <h2 className="mt-2 text-xl font-semibold text-ink-950">Tell us about the work</h2>
+                </div>
+                <span className="hidden font-mono text-[9px] uppercase tracking-[0.14em] text-ink-400 sm:inline">
+                  Required fields marked *
+                </span>
+              </div>
+
+              <div className="mt-7 grid gap-6 sm:grid-cols-2">
+                <Field label="Name" id="name" required>
                   <input
                     id="name"
                     name="name"
@@ -143,14 +148,12 @@ export default function Contact() {
                     autoComplete="name"
                     value={form.name}
                     onChange={update('name')}
-                    className="w-full rounded-lg border border-ink-200 bg-white px-4 py-2.5 text-ink-900 outline-none transition focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
+                    className="form-control"
                     placeholder="Your name"
                   />
-                </div>
-                <div className="sm:col-span-1">
-                  <label htmlFor="email" className="mb-1.5 block text-sm font-semibold text-ink-800">
-                    Email <span className="text-brand-blue">*</span>
-                  </label>
+                </Field>
+
+                <Field label="Email" id="email" required>
                   <input
                     id="email"
                     name="email"
@@ -159,14 +162,12 @@ export default function Contact() {
                     autoComplete="email"
                     value={form.email}
                     onChange={update('email')}
-                    className="w-full rounded-lg border border-ink-200 bg-white px-4 py-2.5 text-ink-900 outline-none transition focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
+                    className="form-control"
                     placeholder="you@company.com"
                   />
-                </div>
-                <div className="sm:col-span-2">
-                  <label htmlFor="company" className="mb-1.5 block text-sm font-semibold text-ink-800">
-                    Company <span className="font-normal text-ink-400">(optional)</span>
-                  </label>
+                </Field>
+
+                <Field label="Company" id="company" optional>
                   <input
                     id="company"
                     name="company"
@@ -174,73 +175,87 @@ export default function Contact() {
                     autoComplete="organization"
                     value={form.company}
                     onChange={update('company')}
-                    className="w-full rounded-lg border border-ink-200 bg-white px-4 py-2.5 text-ink-900 outline-none transition focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
-                    placeholder="Your company"
+                    className="form-control"
+                    placeholder="Your organisation"
                   />
-                </div>
-                <div className="sm:col-span-2">
-                  <label htmlFor="topic" className="mb-1.5 block text-sm font-semibold text-ink-800">
-                    What is this about?
-                  </label>
+                </Field>
+
+                <Field label="Area of interest" id="topic">
                   <select
                     id="topic"
                     name="topic"
                     value={form.topic}
                     onChange={update('topic')}
-                    className="w-full rounded-lg border border-ink-200 bg-white px-4 py-2.5 text-ink-900 outline-none transition focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
+                    className="form-control"
                   >
-                    {topics.map((t) => (
-                      <option key={t} value={t}>
-                        {t}
-                      </option>
+                    {topics.map((topic) => (
+                      <option key={topic} value={topic}>{topic}</option>
                     ))}
                   </select>
-                </div>
-                <div className="sm:col-span-2">
-                  <label htmlFor="message" className="mb-1.5 block text-sm font-semibold text-ink-800">
-                    The problem you are trying to solve <span className="text-brand-blue">*</span>
-                  </label>
+                </Field>
+
+                <Field label="What problem are you trying to solve?" id="message" required className="sm:col-span-2">
                   <textarea
                     id="message"
                     name="message"
                     required
-                    rows={5}
+                    rows={6}
                     value={form.message}
                     onChange={update('message')}
-                    className="w-full resize-y rounded-lg border border-ink-200 bg-white px-4 py-2.5 text-ink-900 outline-none transition focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
-                    placeholder="Tell us a little about what you are working on..."
+                    className="form-control resize-y"
+                    placeholder="Describe the context, the problem and what you would like to change."
                   />
-                </div>
+                </Field>
               </div>
 
-              <button type="submit" className="btn-accent mt-6 w-full sm:w-auto">
-                Speak to us
-                <IconArrowRight className="h-4 w-4" />
-              </button>
+              <div className="mt-7 flex flex-col gap-4 border-t border-ink-100 pt-6 sm:flex-row sm:items-center sm:justify-between">
+                <button type="submit" className="btn-accent">
+                  Prepare email
+                  <IconArrowRight className="h-4 w-4" />
+                </button>
+                <p className="max-w-xs text-xs leading-5 text-ink-400">
+                  Opens your default email application with these details pre-filled.
+                </p>
+              </div>
 
-              {submitted && (
+              {prepared && (
                 <div
-                  className="mt-5 flex items-start gap-3 rounded-lg border border-brand-teal/30 bg-brand-teal/5 p-4 text-sm text-ink-700"
+                  className="mt-5 flex items-start gap-3 border border-brand-teal/30 bg-brand-teal/5 p-4 text-sm leading-6 text-ink-700"
                   role="status"
+                  aria-live="polite"
                 >
-                  <IconCheck className="mt-0.5 h-5 w-5 shrink-0 text-brand-teal" />
+                  <IconCheck className="mt-0.5 h-5 w-5 shrink-0 text-brand-tealdark" />
                   <p>
-                    Thanks, {form.name || 'there'}. Your email client should have opened with your
-                    message ready to send to <strong>{site.email}</strong>. If it did not, please
-                    email us directly.
+                    Your email application should now be open with the enquiry prepared for{' '}
+                    <strong>{site.email}</strong>. Review it there before sending.
                   </p>
                 </div>
               )}
-
-              <p className="mt-4 text-xs leading-relaxed text-ink-400">
-                Note: this form is not yet connected to an email backend. For now, submitting
-                opens your own email client with the details pre-filled. The form is ready to be
-                connected to a server later.
-              </p>
             </form>
           </Reveal>
         </div>
       </section>
     </>
+  )
+}
+
+type FieldProps = {
+  label: string
+  id: string
+  children: ReactNode
+  required?: boolean
+  optional?: boolean
+  className?: string
+}
+
+function Field({ label, id, children, required, optional, className = '' }: FieldProps) {
+  return (
+    <div className={className}>
+      <label htmlFor={id} className="mb-2 block text-sm font-semibold text-ink-800">
+        {label} {required && <span className="text-brand-blue">*</span>}
+        {optional && <span className="ml-1 font-normal text-ink-400">(optional)</span>}
+      </label>
+      {children}
+    </div>
   )
 }

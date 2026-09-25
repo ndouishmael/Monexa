@@ -3,6 +3,7 @@ import Seo from '../components/Seo'
 import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
 import SectionHeading from '../components/SectionHeading'
+import EngineeringPipeline from '../components/EngineeringPipeline'
 import CtaBand from '../components/CtaBand'
 import { capabilities } from '../data/content'
 import {
@@ -52,7 +53,11 @@ export default function WhatWeDo() {
           intro="Custom engineering is our centre of gravity. The capabilities around it help move software from idea to dependable system."
         />
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+        <Reveal className="mt-14">
+          <EngineeringPipeline />
+        </Reveal>
+
+        <div className="mt-10 grid gap-6 lg:grid-cols-2">
           {capabilities.map((capability, index) => {
             const Icon = capabilityIcons[index]
             return (

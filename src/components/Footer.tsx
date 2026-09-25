@@ -11,8 +11,15 @@ export default function Footer() {
       <div className="relative container-page py-14 md:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.35fr_0.8fr_0.9fr_1fr]">
           <div>
-            <div className="inline-flex border border-white/10 bg-white">
-              <Logo plain light />
+            <div className="inline-flex items-stretch border border-white/15 bg-white">
+              <Logo plain />
+              <div className="flex flex-col justify-center border-l border-ink-100 bg-ink-50 px-3" aria-hidden="true">
+                <span className="font-mono text-[6px] font-semibold uppercase tracking-[0.16em] text-ink-400">Brand core</span>
+                <span className="mt-1 flex items-center gap-1.5 font-mono text-[6px] uppercase tracking-[0.13em] text-brand-tealdark">
+                  <i className="h-1 w-1 rounded-full bg-brand-teal" />
+                  System 00
+                </span>
+              </div>
             </div>
             <p className="mt-6 text-xl font-semibold text-white">Monexa</p>
             <p className="mt-2 text-sm text-ink-300">{site.tagline}</p>

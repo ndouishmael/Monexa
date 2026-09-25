@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import Seo from '../components/Seo'
 import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
-import ProductImage from '../components/ProductImage'
+import ProductSystemStage from '../components/ProductSystemStage'
 import CtaBand from '../components/CtaBand'
 import { products } from '../data/products'
 import { IconArrowRight, IconCheck } from '../components/Icons'
@@ -44,21 +44,13 @@ export default function Products() {
               key={product.slug}
               className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14"
             >
-              <Reveal
-                className={`lg:col-span-7 ${index % 2 === 1 ? 'lg:order-2' : ''}`}
-              >
-                <div className="relative">
-                  <ProductImage product={product} caption />
-                  <span
-                    className="absolute -left-3 -top-3 hidden h-14 w-14 border-l border-t border-brand-blue lg:block"
-                    aria-hidden="true"
-                  />
-                </div>
-              </Reveal>
+              <div className={`lg:col-span-8 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                <ProductSystemStage product={product} compact eager={index === 0} />
+              </div>
 
               <Reveal
                 delay={100}
-                className={`lg:col-span-5 ${index % 2 === 1 ? 'lg:order-1' : ''}`}
+                className={`lg:col-span-4 ${index % 2 === 1 ? 'lg:order-1' : ''}`}
               >
                 <div className="flex items-center justify-between border-b border-ink-100 pb-4">
                   <span className="system-label">Product / 0{index + 1}</span>

@@ -62,7 +62,12 @@ The application uses the approved files currently in `public/images/`:
 - `the-eye-dashboard.png` — The Eye portfolio and product-page artwork
 
 Product artwork is rendered at its native 16:9 aspect ratio with `object-fit: contain`; it is not
-cropped, recoloured or modified.
+cropped, recoloured or modified. The approved images are presented inside a lightweight Monexa
+engineering environment built with CSS, SVG and `IntersectionObserver`. Lines, system nodes and
+interface layers activate around the unchanged source artwork as it enters the viewport.
+
+Motion uses transforms and opacity where possible, pauses outside the viewport, and resolves to a
+fully visible static state when `prefers-reduced-motion` is enabled.
 
 ## Contact interface
 

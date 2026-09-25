@@ -36,8 +36,8 @@ export default function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
         scrolled || mobileOpen
-          ? 'border-ink-100 bg-white/95 shadow-[0_10px_40px_-28px_rgba(5,24,40,.5)] backdrop-blur-xl'
-          : 'border-ink-100/80 bg-white/90 backdrop-blur-md'
+          ? 'border-ink-100 bg-ink-50/95 shadow-[0_10px_40px_-28px_rgba(5,24,40,.5)] backdrop-blur-xl'
+          : 'border-ink-100/80 bg-ink-50/90 backdrop-blur-md'
       }`}
     >
       <a
@@ -48,7 +48,18 @@ export default function Header() {
       </a>
 
       <div className="container-page flex h-20 items-center justify-between gap-8">
-        <Logo />
+        <div className="flex items-center gap-3">
+          <Logo />
+          <div className="hidden border-l border-ink-200 pl-3 xl:block" aria-hidden="true">
+            <span className="block font-mono text-[7px] font-semibold uppercase tracking-[0.18em] text-ink-400">
+              Engineering system
+            </span>
+            <span className="mt-1 flex items-center gap-1.5 font-mono text-[7px] uppercase tracking-[0.14em] text-brand-tealdark">
+              <i className="h-1.5 w-1.5 rounded-full bg-brand-teal" />
+              South Africa
+            </span>
+          </div>
+        </div>
 
         <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Primary navigation">
           {nav.map((item) => (
@@ -87,7 +98,7 @@ export default function Header() {
 
       <div
         id="mobile-navigation"
-        className={`overflow-hidden border-t border-ink-100 bg-white transition-[max-height,opacity] duration-300 lg:hidden ${
+        className={`overflow-hidden border-t border-ink-100 bg-ink-50 transition-[max-height,opacity] duration-300 lg:hidden ${
           mobileOpen ? 'max-h-[calc(100vh-5rem)] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >

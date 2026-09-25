@@ -4,7 +4,6 @@ import { site } from '../data/site'
 type LogoProps = {
   className?: string
   plain?: boolean
-  light?: boolean
 }
 
 /**
@@ -12,12 +11,10 @@ type LogoProps = {
  * trims the asset's large blank canvas; the complete logo artwork remains
  * visible and is never redrawn, recoloured or altered.
  */
-export default function Logo({ className = '', plain = false, light = false }: LogoProps) {
+export default function Logo({ className = '', plain = false }: LogoProps) {
   const artwork = (
     <span
-      className={`relative block h-14 w-[112px] shrink-0 overflow-hidden ${
-        light ? 'bg-white' : 'bg-[#f9fbfc]'
-      } ${className}`}
+      className={`relative block h-16 w-[112px] shrink-0 overflow-hidden bg-transparent ${className}`}
     >
       <img
         src={site.logo}

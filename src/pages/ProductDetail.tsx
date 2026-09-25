@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import Seo from '../components/Seo'
 import Reveal from '../components/Reveal'
-import ProductImage from '../components/ProductImage'
+import ProductSystemStage from '../components/ProductSystemStage'
 import CtaBand from '../components/CtaBand'
 import NotFound from './NotFound'
 import { getProduct, products } from '../data/products'
@@ -69,9 +69,7 @@ export default function ProductDetail() {
               </Reveal>
             </div>
 
-            <Reveal delay={100}>
-              <ProductImage product={product} eager caption />
-            </Reveal>
+            <ProductSystemStage product={product} eager compact />
           </div>
         </div>
       </section>

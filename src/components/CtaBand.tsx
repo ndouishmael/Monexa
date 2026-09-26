@@ -10,9 +10,9 @@ type Props = {
 }
 
 export default function CtaBand({
-  title = 'Have a problem worth solving?',
-  intro = 'Tell us what you are trying to build, fix or figure out. We would like to understand the problem before we talk about software.',
-  primaryLabel = 'Speak to us',
+  title = 'Have a software problem worth solving?',
+  intro = 'Tell us what you are trying to build, fix or replace. We start by understanding the problem, then we tell you honestly what it would take to solve it.',
+  primaryLabel = 'Start a project',
   primaryTo = '/contact',
 }: Props) {
   return (
@@ -31,10 +31,10 @@ export default function CtaBand({
                 <IconArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                to="/what-we-do"
+                to="/services"
                 className="btn w-full border border-white/20 text-white hover:bg-white/10 sm:w-auto"
               >
-                Explore what we do
+                Explore our services
               </Link>
             </div>
           </div>

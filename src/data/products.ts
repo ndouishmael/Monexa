@@ -2,14 +2,28 @@ export type Product = {
   slug: string
   name: string
   category: string
+  domain: string
   tagline?: string
   relationship: string
+  /** Short status chip, e.g. "In Development". */
   status: string
+  /** Longer status sentence used on product pages. */
+  statusDetail: string
   short: string
   summary: string
+  /** What the product is intended to do, in plain terms. */
+  intent: string
   problem: string[]
   audience: string[]
   capabilities: { title: string; description: string }[]
+  /**
+   * Approved product imagery committed to this repository.
+   * These paths must match the files in /public/images exactly.
+   */
+  image: string
+  imageAlt: string
+  /** Signal labels used by the product interface framing. */
+  signals: string[]
   accent: 'blue' | 'teal' | 'mixed'
 }
 
@@ -17,164 +31,201 @@ export const products: Product[] = [
   {
     slug: 'touchmed24',
     name: 'TouchMed24',
-    category: 'Healthcare Technology / Practice Management',
+    category: 'Healthcare Technology',
+    domain: 'Medical practice management and medical-aid billing',
     relationship: 'A Product of Monexa.inc',
-    status: 'In development',
+    status: 'In Development',
+    statusDetail:
+      'TouchMed24 is currently in development at Monexa. It is not yet commercially available.',
     short:
-      'A healthcare technology platform designed to help medical practices run their day-to-day operations with less friction.',
+      'A medical practice management and medical-aid billing platform being developed for South African medical practices.',
     summary:
-      'TouchMed24 is a healthcare technology and medical practice management platform being developed by Monexa. It is designed to bring the moving parts of a practice — patients, consultations, medical-aid workflows and administration — into one coherent system, so clinical teams can spend more time on care and less on paperwork.',
+      'TouchMed24 is a medical practice management and medical-aid billing platform being developed by Monexa for South African medical practices. It is designed to hold the moving parts of a practice — patients, appointments, consultations, billing and medical-aid claims — in one system, so that administrative work stops competing with patient care.',
+    intent:
+      'TouchMed24 is intended to give a practice a single working view of its day: who is booked, who is waiting, who is in consult, what has been billed, and where each medical-aid claim stands.',
     problem: [
-      'Medical practices juggle patient records, scheduling, medical-aid rules and billing across disconnected tools and manual processes.',
-      'Eligibility checks, claims and administration are time-consuming and error-prone when handled in isolation.',
-      'Practice staff need a single, dependable view of operations rather than fragmented systems that do not talk to each other.',
+      'Practices commonly run reception, clinical notes, billing and medical-aid claims across separate tools, paper and spreadsheets that do not reconcile with each other.',
+      'Medical-aid billing and claims involve rules and follow-up that are slow and error-prone to manage by hand, and rejected or forgotten claims cost the practice money.',
+      'Practice managers rarely have one dependable view of the day — appointments, queue, consultations and outstanding claims usually live in different places.',
     ],
     audience: [
-      'Medical and healthcare practices',
-      'Practice managers and administrative staff',
-      'Clinicians who need workflows that support, not slow, patient care',
+      'South African medical and healthcare practices',
+      'Practice managers and reception or administrative staff',
+      'Clinicians who want the admin layer to stay out of the consultation',
     ],
     capabilities: [
       {
-        title: 'Patient management',
+        title: 'Patient records',
         description:
-          'A structured, secure foundation for patient information and records across the practice.',
+          'A structured, access-controlled foundation for patient information across the practice.',
       },
       {
-        title: 'Practice operations',
+        title: 'Appointments and scheduling',
         description:
-          'Tools intended to coordinate the day-to-day running of a practice in one place.',
+          'A day view of bookings across practitioners and rooms, designed for how reception actually works.',
+      },
+      {
+        title: 'Patient queue',
+        description:
+          'Live visibility of who has arrived, who is waiting and who is currently in consult.',
       },
       {
         title: 'Consultations',
         description:
-          'Support for the consultation workflow so clinical time is spent on care, not admin.',
+          'Support for the consultation workflow so clinical time is spent on the patient, not the system.',
       },
       {
-        title: 'Medical-aid workflows & eligibility',
+        title: 'Medical-aid claims',
         description:
-          'Designed to streamline medical-aid processes and eligibility so they are less manual.',
+          'Claims tracked through submission, approval, pending and rejection instead of being chased on paper.',
       },
       {
-        title: 'Billing & claims',
+        title: 'Billing',
         description:
-          'Intended to make billing and claims more consistent and less error-prone.',
+          'Billing tied to the consultation that produced it, so what was done and what was charged stay connected.',
       },
       {
-        title: 'Practice administration',
+        title: 'Practice operations',
         description:
-          'Administrative tooling that ties the practice together into a coherent system.',
+          'An operational view of the practice day: waiting, in consult, completed and average wait times.',
       },
     ],
-    accent: 'blue',
+    image: '/images/touchmed24-dashboard.png',
+    imageAlt:
+      'TouchMed24 practice dashboard in development, showing the appointment schedule, patient queue, medical-aid claims breakdown and live practice operations',
+    signals: ['Patients', 'Appointments', 'Consultations', 'Billing', 'Claims'],
+    accent: 'teal',
   },
   {
     slug: 'ledger-and-saldo',
     name: 'Ledger & Saldo',
-    category: 'Financial Software / Accounting & Financial Management',
+    category: 'Financial Software',
+    domain: 'Accounting and financial management',
     tagline: 'Find your balance.',
     relationship: 'A software product being developed by Monexa',
-    status: 'In development',
+    status: 'In Development',
+    statusDetail:
+      'Ledger & Saldo is currently in development at Monexa. It is not yet commercially available.',
     short:
-      'A financial software and accounting platform designed to give businesses a clear, dependable picture of their finances.',
+      'An accounting and financial management platform being developed to give a business a clear, current picture of its finances.',
     summary:
-      'Ledger & Saldo is a financial software and accounting platform being developed by Monexa. It is designed to help businesses keep accurate financial records, understand their cash flow and manage the relationships — customers, suppliers and accounts — that sit behind every number.',
+      'Ledger & Saldo is a financial software and accounting platform being developed by Monexa. It is designed to keep accounts, transactions, invoices and cash flow in one place, so that a business can see its real financial position without first assembling it from spreadsheets.',
+    intent:
+      'Ledger & Saldo is intended to answer the questions a business actually asks about money: what came in, what went out, what is owed, what is owing, and how long the current position lasts.',
     problem: [
-      'Businesses often manage accounting, invoicing and financial records across spreadsheets and tools that do not reconcile cleanly.',
-      'Understanding real cash flow and financial position can be slow, manual and unclear.',
-      'Financial data, customers, suppliers and accounts need to live in one dependable system to be genuinely useful.',
+      'Financial records are frequently spread across spreadsheets, bank statements and invoicing tools that have to be reconciled manually before anyone can trust the numbers.',
+      'Cash flow is often understood in hindsight, which is too late for the decisions that depend on it.',
+      'Receivables, payables and expenses are tracked separately, so the overall position is never visible in one place.',
     ],
     audience: [
       'Small and growing businesses',
       'Finance and accounting teams',
-      'Owners who need a clear view of financial health',
+      'Owners who need a current view of financial health, not a quarterly one',
     ],
     capabilities: [
       {
-        title: 'Accounting',
-        description:
-          'A structured core for accounting built around accuracy and clarity.',
-      },
-      {
-        title: 'Financial management',
-        description:
-          'Designed to help businesses manage their finances with confidence.',
-      },
-      {
-        title: 'Customers & suppliers',
-        description:
-          'Keep the relationships behind the numbers organised in one place.',
-      },
-      {
         title: 'Accounts',
         description:
-          'A dependable structure for accounts and financial records.',
+          'A structured chart of accounts as the dependable base for everything else.',
       },
       {
-        title: 'Reporting',
+        title: 'Transactions',
         description:
-          'Reporting intended to turn financial records into understandable insight.',
+          'Income and expenses recorded, categorised and reconcilable rather than retyped.',
+      },
+      {
+        title: 'Invoices',
+        description:
+          'Invoicing connected to the accounts and transactions it affects.',
+      },
+      {
+        title: 'Receivables and payables',
+        description:
+          'What is owed to the business and what the business owes, kept visible side by side.',
       },
       {
         title: 'Cash flow',
         description:
-          'Designed to make cash flow visible and easier to plan around.',
+          'Inflows and outflows over time, designed to make the trend readable at a glance.',
+      },
+      {
+        title: 'Reporting',
+        description:
+          'Reporting that turns records into a position a business can act on.',
+      },
+      {
+        title: 'Financial visibility',
+        description:
+          'Working indicators such as runway, burn rate and forecast balance, drawn from the records already captured.',
       },
     ],
-    accent: 'teal',
+    image: '/images/ledger-saldo-dashboard.png',
+    imageAlt:
+      'Ledger & Saldo dashboard in development, showing account balances, a six-month cash flow chart, recent transactions, expense breakdown and financial visibility indicators',
+    signals: ['Accounts', 'Transactions', 'Invoices', 'Cash flow', 'Reports'],
+    accent: 'blue',
   },
   {
     slug: 'the-eye',
     name: 'The Eye',
     category: 'Network & Infrastructure Monitoring',
+    domain: 'Network topology, telemetry and alarms',
     relationship: 'A software product being developed by Monexa',
-    status: 'In development',
+    status: 'In Development',
+    statusDetail:
+      'The Eye is currently in development at Monexa. It is not deployed in production.',
     short:
-      'A network and infrastructure monitoring platform designed to give teams clear visibility into their environments.',
+      'A network and infrastructure monitoring platform being developed to show how an environment is connected and how it is behaving.',
     summary:
-      'The Eye is a network and infrastructure monitoring platform being developed by Monexa. It is designed to give teams clear visibility into their network and infrastructure — from topology and devices through to performance, links and alarms — so problems can be understood before they become outages.',
+      'The Eye is a network and infrastructure monitoring platform being developed by Monexa. It is designed to bring topology, device health, performance telemetry and alarms into one operational view, so that a team can see a problem forming instead of hearing about it after an outage.',
+    intent:
+      'The Eye is intended to answer the operational questions first: what is connected to what, what is degraded right now, what changed, and what needs attention before users notice.',
     problem: [
-      'Infrastructure and network environments are complex, and visibility is often scattered across tools.',
-      'Teams need to understand topology, performance and the health of links and devices in one place.',
-      'Without clear monitoring and alarms, problems are discovered late rather than anticipated.',
+      'Visibility is usually scattered across device interfaces, ad-hoc scripts and separate tools, so nobody has the whole picture at once.',
+      'Without a live topology, the relationship between a failing link and the services it affects has to be reconstructed from memory under pressure.',
+      'Alerting that is noisy or missing means real problems are found late — often by the people using the network.',
     ],
     audience: [
-      'Technical and operations teams',
+      'Technical operations and network teams',
       'Organisations running their own network and infrastructure',
-      'Teams that need dependable visibility rather than guesswork',
+      'Teams that need to see degradation before it becomes downtime',
     ],
     capabilities: [
       {
-        title: 'Infrastructure monitoring',
+        title: 'Network topology',
         description:
-          'A foundation for monitoring the infrastructure teams depend on.',
+          'A live map of nodes and links, so the shape of the environment is visible rather than assumed.',
       },
       {
-        title: 'Network visibility',
+        title: 'Device monitoring',
         description:
-          'Designed to bring network visibility into a single, clear view.',
+          'Health and status per device, from core switches through to edge and branch equipment.',
       },
       {
-        title: 'Topology',
+        title: 'Performance telemetry',
         description:
-          'Understand how the environment is connected through topology.',
+          'Throughput, latency and utilisation tracked over time instead of sampled by hand.',
       },
       {
         title: 'Alarms',
         description:
-          'Alarms intended to surface problems early rather than late.',
+          'Critical, warning and informational alarms with the context needed to act, and acknowledgement so nothing is handled twice.',
       },
       {
-        title: 'Performance & links',
+        title: 'Resource utilisation',
         description:
-          'Insight into performance and the health of links across the network.',
+          'CPU, memory and uptime surfaced per device to show pressure building before it fails.',
       },
       {
-        title: 'Network devices & reporting',
+        title: 'Status overview',
         description:
-          'Visibility into devices with reporting that supports real decisions.',
+          'A consolidated status grid across the estate for a fast read of what is healthy and what is not.',
       },
     ],
+    image: '/images/the-eye-dashboard.png',
+    imageAlt:
+      'The Eye monitoring dashboard in development, showing a network topology map, CPU, memory and uptime metrics, active alarms, network performance over time and a topology status grid',
+    signals: ['Topology', 'Devices', 'Telemetry', 'Alarms', 'Uptime'],
     accent: 'mixed',
   },
 ]

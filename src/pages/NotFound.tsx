@@ -12,7 +12,7 @@ export default function NotFound() {
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-grid opacity-70 mask-fade-b" aria-hidden="true" />
         <div className="relative container-page flex min-h-[60vh] flex-col items-center justify-center py-24 text-center">
-          <p className="font-mono text-sm uppercase tracking-[0.2em] text-brand-blue">
+          <p className="text-sm font-semibold uppercase tracking-wider text-brand-blue">
             404 — Not found
           </p>
           <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-ink-900 sm:text-5xl">

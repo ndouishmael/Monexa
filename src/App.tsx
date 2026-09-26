@@ -1,7 +1,7 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import SiteLayout from './layouts/SiteLayout'
 import Home from './pages/Home'
-import WhatWeDo from './pages/WhatWeDo'
+import Services from './pages/Services'
 import Products from './pages/Products'
 import ProductDetail from './pages/ProductDetail'
 import About from './pages/About'
@@ -14,7 +14,9 @@ export default function App() {
     <Routes>
       <Route element={<SiteLayout />}>
         <Route index element={<Home />} />
-        <Route path="what-we-do" element={<WhatWeDo />} />
+        <Route path="services" element={<Services />} />
+        {/* Previous URL for the services page — kept so existing links do not break. */}
+        <Route path="what-we-do" element={<Navigate to="/services" replace />} />
         <Route path="products" element={<Products />} />
         <Route path="products/:slug" element={<ProductDetail />} />
         <Route path="about" element={<About />} />

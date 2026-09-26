@@ -102,7 +102,7 @@ export default function Header() {
                     <div className="absolute left-0 top-full mt-2 w-80 rounded-xl border border-ink-100 bg-white p-2 shadow-[0_24px_60px_-24px_rgba(11,32,53,0.4)]">
                       <Link
                         to="/products"
-                        className="mb-1 block rounded-lg px-3 py-2 text-xs font-mono uppercase tracking-wider text-brand-blue hover:bg-ink-50"
+                        className="mb-1 block rounded-lg px-3 py-2 text-sm font-semibold text-brand-blue hover:bg-ink-50"
                       >
                         All products
                       </Link>
@@ -140,7 +140,7 @@ export default function Header() {
 
           <div className="hidden lg:block">
             <Link to="/contact" className="btn-primary">
-              Speak to us
+              Start a project
               <IconArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -176,7 +176,7 @@ export default function Header() {
                 </NavLink>
               ))}
               <div className="mt-2 grid gap-1 rounded-lg bg-ink-50 p-2">
-                <span className="px-2 py-1 font-mono text-[11px] uppercase tracking-wider text-ink-400">
+                <span className="px-2 py-1 text-xs font-semibold text-ink-500">
                   Products
                 </span>
                 {products.map((p) => (
@@ -190,7 +190,7 @@ export default function Header() {
                 ))}
               </div>
               <Link to="/contact" className="btn-accent mt-3 w-full">
-                Speak to us
+                Start a project
                 <IconArrowRight className="h-4 w-4" />
               </Link>
             </nav>

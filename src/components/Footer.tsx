@@ -17,17 +17,21 @@ export default function Footer() {
             <div className="inline-flex rounded-lg bg-white p-3">
               <Logo plain className="block h-8" />
             </div>
-            <p className="mt-5 max-w-xs text-lg font-semibold text-white">Monexa</p>
-            <p className="mt-1 max-w-xs text-sm text-ink-300">
+            <p className="mt-5 max-w-xs text-lg font-semibold text-white">
               {site.tagline}
             </p>
-            <p className="mt-6 max-w-xs text-sm text-ink-400">
+            <p className="mt-3 max-w-xs text-sm leading-relaxed text-ink-300">
+              Monexa is a South African software engineering company. We design and
+              engineer custom software for businesses, and develop our own software
+              products.
+            </p>
+            <p className="mt-5 max-w-xs text-sm text-ink-400">
               Built in South Africa. Local understanding, global ambition.
             </p>
           </div>
 
           <nav aria-label="Footer navigation">
-            <h2 className="font-mono text-xs uppercase tracking-[0.18em] text-ink-400">Company</h2>
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-ink-400">Company</h2>
             <ul className="mt-4 space-y-3 text-sm">
               {nav.map((item) => (
                 <li key={item.to}>
@@ -40,7 +44,7 @@ export default function Footer() {
           </nav>
 
           <nav aria-label="Products navigation">
-            <h2 className="font-mono text-xs uppercase tracking-[0.18em] text-ink-400">Products</h2>
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-ink-400">Products</h2>
             <ul className="mt-4 space-y-3 text-sm">
               {products.map((p) => (
                 <li key={p.slug}>
@@ -61,7 +65,7 @@ export default function Footer() {
           </nav>
 
           <div>
-            <h2 className="font-mono text-xs uppercase tracking-[0.18em] text-ink-400">Contact</h2>
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-ink-400">Contact</h2>
             <ul className="mt-4 space-y-3 text-sm">
               <li>
                 <a
@@ -75,7 +79,7 @@ export default function Footer() {
               <li className="text-ink-400">South Africa</li>
               <li>
                 <Link to="/contact" className="text-brand-teal transition-colors hover:text-white">
-                  Speak to us →
+                  Start a project →
                 </Link>
               </li>
             </ul>
@@ -84,8 +88,8 @@ export default function Footer() {
 
         <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-ink-400 sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} Monexa. All rights reserved.</p>
-          <p className="font-mono uppercase tracking-[0.18em] text-ink-500">
-            Where Software Meets Substance.
+          <p className="text-ink-500">
+            Monexa — Where Software Meets Substance.
           </p>
         </div>
       </div>

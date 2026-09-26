@@ -169,3 +169,32 @@ export function IconClose(p: IconProps) {
     </svg>
   )
 }
+
+export function IconMobile(p: IconProps) {
+  return (
+    <svg {...base} {...p}>
+      <rect x="6" y="2.5" width="12" height="19" rx="2.5" />
+      <path d="M10.5 18.5h3" />
+    </svg>
+  )
+}
+
+export function IconChart(p: IconProps) {
+  return (
+    <svg {...base} {...p}>
+      <path d="M3 3v16.5A1.5 1.5 0 0 0 4.5 21H21" />
+      <path d="m7 15 3.5-4 3 2.5L18 8" />
+    </svg>
+  )
+}
+
+export function IconBuilding(p: IconProps) {
+  return (
+    <svg {...base} {...p}>
+      <path d="M3 21h18" />
+      <path d="M5 21V5.5A1.5 1.5 0 0 1 6.5 4h7A1.5 1.5 0 0 1 15 5.5V21" />
+      <path d="M15 10h2.5A1.5 1.5 0 0 1 19 11.5V21" />
+      <path d="M8.5 8h3M8.5 12h3M8.5 16h3" />
+    </svg>
+  )
+}

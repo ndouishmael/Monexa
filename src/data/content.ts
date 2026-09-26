@@ -1,52 +1,211 @@
-export type Capability = {
+/**
+ * Site content for capability areas, the engagement process and company
+ * principles. Nothing here claims clients, certifications, partnerships or
+ * technologies that Monexa has not actually stated.
+ */
+
+export type CapabilityArea = {
   id: string
   title: string
   summary: string
-  points: string[]
+  examples: string[]
+  icon:
+    | 'code'
+    | 'mobile'
+    | 'layers'
+    | 'grid'
+    | 'link'
+    | 'refresh'
+    | 'chart'
+    | 'building'
 }
 
-export const capabilities: Capability[] = [
+/**
+ * Concrete things a business can hire Monexa to build. These are the
+ * capability areas of custom software engineering — the primary business.
+ */
+export const capabilityAreas: CapabilityArea[] = [
   {
-    id: 'custom-software',
-    title: 'Custom Software Engineering',
+    id: 'web-applications',
+    title: 'Web applications',
     summary:
-      'Software designed around real business requirements — not forced into a template.',
-    points: [
-      'We start with the actual problem, not a pre-built solution.',
-      'Systems engineered to fit how a business genuinely works.',
-      'Built with architecture, discipline and long-term maintainability in mind.',
+      'Browser-based software that a team logs into and uses to get work done.',
+    examples: [
+      'Customer and member portals',
+      'Booking, scheduling and request systems',
+      'Role-based admin and back-office tools',
+    ],
+    icon: 'code',
+  },
+  {
+    id: 'mobile-applications',
+    title: 'Mobile applications',
+    summary:
+      'Applications for people who work away from a desk, on a phone or tablet.',
+    examples: [
+      'Field, on-site and in-the-room workflows',
+      'Capture, checklists and approvals',
+      'Mobile front-ends onto an existing system',
+    ],
+    icon: 'mobile',
+  },
+  {
+    id: 'business-platforms',
+    title: 'Business platforms',
+    summary:
+      'Larger systems that carry a core part of how a business operates or earns.',
+    examples: [
+      'Multi-user platforms with defined roles and permissions',
+      'Products a business sells or offers to its own customers',
+      'Systems designed to grow beyond their first version',
+    ],
+    icon: 'layers',
+  },
+  {
+    id: 'internal-systems',
+    title: 'Internal systems',
+    summary:
+      'Operational software replacing spreadsheets, email threads and manual tracking.',
+    examples: [
+      'Job, case and workflow tracking',
+      'Inventory, assets and records management',
+      'Approval and operational sign-off flows',
+    ],
+    icon: 'grid',
+  },
+  {
+    id: 'apis-integrations',
+    title: 'APIs and integrations',
+    summary:
+      'Making separate systems exchange data reliably instead of being rekeyed by hand.',
+    examples: [
+      'APIs for your own software to expose or consume',
+      'Connecting existing tools that do not talk to each other',
+      'Scheduled and event-driven data synchronisation',
+    ],
+    icon: 'link',
+  },
+  {
+    id: 'automation',
+    title: 'Automation',
+    summary:
+      'Removing repetitive manual steps that cost time and introduce errors.',
+    examples: [
+      'Document, report and notification generation',
+      'Rule-driven routing and status changes',
+      'Recurring processes that currently depend on someone remembering',
+    ],
+    icon: 'refresh',
+  },
+  {
+    id: 'data-dashboards',
+    title: 'Data and dashboards',
+    summary:
+      'Turning the data a business already produces into something it can act on.',
+    examples: [
+      'Operational dashboards and monitoring views',
+      'Reporting built around the decisions being made',
+      'Consolidating data that currently lives in several places',
+    ],
+    icon: 'chart',
+  },
+  {
+    id: 'custom-enterprise-software',
+    title: 'Custom enterprise software',
+    summary:
+      'Systems for organisations whose requirements do not fit off-the-shelf products.',
+    examples: [
+      'Software shaped around regulated or specialised processes',
+      'Replacing or modernising ageing internal systems',
+      'Long-lived systems maintained and extended over time',
+    ],
+    icon: 'building',
+  },
+]
+
+export type EngagementStep = {
+  index: string
+  title: string
+  summary: string
+  detail: string
+  outputs: string[]
+}
+
+/**
+ * The full engagement, described practically. Same six stages used on
+ * /how-we-work, with additional detail for the services page.
+ */
+export const engagement: EngagementStep[] = [
+  {
+    index: '01',
+    title: 'Understand',
+    summary: 'We start with the problem, not the technology.',
+    detail:
+      'We work through what is actually happening today: who does the work, where it breaks down, what it costs in time or accuracy, and what has already been tried. This is the stage that decides whether software is even the right answer, and which part of the problem is worth solving first.',
+    outputs: [
+      'A clear statement of the problem',
+      'The people and workflows involved',
+      'An honest view of what is worth building',
     ],
   },
   {
-    id: 'product-engineering',
-    title: 'Product Engineering',
-    summary:
-      'Taking an idea from concept through architecture, development and refinement.',
-    points: [
-      'Shape a raw idea into a defined, buildable product.',
-      'Architecture and engineering that can carry a product forward.',
-      'Refinement driven by how the product needs to work in practice.',
+    index: '02',
+    title: 'Define',
+    summary: 'We turn the problem into a system that can be built.',
+    detail:
+      'We set the scope: what the software has to do, what it deliberately will not do in the first version, how the pieces fit together, and what success looks like. Defining the boundaries early is what keeps a build from drifting.',
+    outputs: [
+      'Scope and priorities for a first version',
+      'System shape and data model',
+      'Agreed definition of done',
     ],
   },
   {
-    id: 'systems-integrations',
-    title: 'Systems & Integrations',
-    summary:
-      'Connecting systems, workflows and data where businesses need them to work together.',
-    points: [
-      'Make separate systems communicate reliably.',
-      'Bring workflows and data into a coherent whole.',
-      'Reduce manual work by joining the pieces that should already connect.',
+    index: '03',
+    title: 'Design',
+    summary: 'We design the experience and the architecture together.',
+    detail:
+      'Screens and structure are designed as one thing. We map the key journeys, design the interfaces people will actually use every day, and settle the architecture behind them so the software is coherent from the interface down to the data.',
+    outputs: [
+      'Key screens and user journeys',
+      'Architecture and integration points',
+      'Decisions recorded before code is written',
     ],
   },
   {
-    id: 'modernisation',
-    title: 'Modernisation',
-    summary: 'Improving or replacing outdated software and processes.',
-    points: [
-      'Assess where existing software is holding a business back.',
-      'Modernise or replace what no longer serves the business.',
-      'Move from fragile processes to dependable, engineered systems.',
+    index: '04',
+    title: 'Engineer',
+    summary: 'We build it properly, in working increments.',
+    detail:
+      'Software is built in increments you can see and use, rather than disappearing for months. We keep the codebase structured and readable, because most of the cost of software arrives after the first release.',
+    outputs: [
+      'Working software delivered incrementally',
+      'A maintainable, reviewable codebase',
+      'Regular visibility of progress',
+    ],
+  },
+  {
+    index: '05',
+    title: 'Test and launch',
+    summary: 'We verify the software and put it into real use carefully.',
+    detail:
+      'Testing runs alongside the build, not as an afterthought: correctness, edge cases, permissions and the awkward real-world paths. Launch is planned — environments, data, access and a way to roll forward if something needs attention.',
+    outputs: [
+      'Testing through the build, not only at the end',
+      'A planned deployment and cut-over',
+      'Handover so the system can be run',
+    ],
+  },
+  {
+    index: '06',
+    title: 'Evolve',
+    summary: 'Software that is used will need to change.',
+    detail:
+      'Once people use a system, reality arrives: new cases, new rules, new priorities. We support and extend what we build so it keeps fitting the business instead of slowly falling behind it.',
+    outputs: [
+      'Support and maintenance',
+      'Improvements driven by real usage',
+      'Room to extend the system over time',
     ],
   },
 ]
@@ -58,65 +217,33 @@ export type Principle = {
 
 export const principles: Principle[] = [
   {
-    title: 'Meaningful',
-    description: 'We build software because it solves a real problem.',
-  },
-  {
-    title: 'Practical',
-    description: 'Technology should work in the real world.',
-  },
-  {
-    title: 'Engineered',
-    description: 'Good software requires thought, architecture and discipline.',
-  },
-  {
-    title: 'Built to Grow',
+    title: 'Problem first',
     description:
-      'Software should be capable of evolving with the people and businesses using it.',
+      'We establish what actually needs to change before we choose anything technical.',
+  },
+  {
+    title: 'Built to be used',
+    description:
+      'Software is judged by whether the people it was built for can do their work with it.',
+  },
+  {
+    title: 'Engineered, not assembled',
+    description:
+      'Architecture, structure and testing, so the system can be maintained and extended.',
+  },
+  {
+    title: 'Honest about scope',
+    description:
+      'We would rather set a realistic scope than promise everything and deliver a shell.',
   },
 ]
 
-export type Stage = {
-  index: string
-  title: string
-  description: string
-}
-
-export const process: Stage[] = [
+/** Company timeline — reflects Monexa's actual stated history only. */
+export const timeline = [
+  { year: '2025', event: 'Monexa founded' },
   {
-    index: '01',
-    title: 'Understand',
-    description:
-      'We begin with the real problem — the people, the context and what actually needs to change.',
+    year: '2026',
+    event: "Software engineering becomes the company's primary focus",
   },
-  {
-    index: '02',
-    title: 'Define',
-    description:
-      'We turn a problem into a clear scope: what we are building, why, and what success looks like.',
-  },
-  {
-    index: '03',
-    title: 'Design',
-    description:
-      'We design the system and the experience together, so the software is coherent from the inside out.',
-  },
-  {
-    index: '04',
-    title: 'Engineer',
-    description:
-      'We build with architecture, discipline and maintainability — engineering rather than assembling.',
-  },
-  {
-    index: '05',
-    title: 'Launch',
-    description:
-      'We bring the software into the real world carefully, with the groundwork in place to run it.',
-  },
-  {
-    index: '06',
-    title: 'Evolve',
-    description:
-      'Software is never finished. We help it grow with the people and businesses using it.',
-  },
+  { year: 'Today', event: 'Custom software engineering + Monexa products' },
 ]

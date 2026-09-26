@@ -14,8 +14,8 @@ export default function Footer() {
       <div className="relative container-page py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
-            <div className="inline-flex rounded-lg bg-white p-3">
-              <Logo plain className="block h-8" />
+            <div className="inline-flex rounded-xl bg-white p-2.5 shadow-[0_12px_32px_-18px_rgba(0,0,0,0.6)]">
+              <Logo plain className="block h-12 md:h-14" />
             </div>
             <p className="mt-5 max-w-xs text-lg font-semibold text-white">Monexa</p>
             <p className="mt-1 max-w-xs text-sm text-ink-300">

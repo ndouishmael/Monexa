@@ -66,14 +66,14 @@ by what they are and the problems they are designed to solve.
 - **Ledger & Saldo** — Financial software / accounting. *Find your balance.*
 - **The Eye** — Network & infrastructure monitoring.
 
-Product illustrations throughout the site are **conceptual** and clearly labelled as such —
-they are not screenshots of live software.
+Product dashboard previews throughout the site are **conceptual** and clearly labelled —
+they are not screenshots of a live service.
 
 ## Assets
 
-- The official Monexa logo lives at `public/images/monexa-logo.jpg` and is referenced as
-  `/images/monexa-logo.jpg`. All other visuals are code-based (SVG / CSS) and committed to
-  the repository, so there are no external asset dependencies.
+- The official Monexa logo lives at `public/images/monexa-logo.png` and is referenced as
+  `/images/monexa-logo.png`. Product dashboard previews are stored in
+  `public/images/products/` and committed to the repository, so there are no external asset dependencies.
 
 ## Contact form
 

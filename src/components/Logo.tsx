@@ -9,8 +9,8 @@ type LogoProps = {
 }
 
 /**
- * Official Monexa logo, sourced from the repository asset at
- * /images/monexa-logo.jpg. The logo is never recreated or substituted.
+ * Official Monexa logo, cropped from the supplied brand artwork and saved with
+ * a transparent background at /images/monexa-logo.png.
  */
 export default function Logo({ className = '', imgClassName = '', plain }: LogoProps) {
   const img = (
@@ -18,8 +18,8 @@ export default function Logo({ className = '', imgClassName = '', plain }: LogoP
       src={site.logo}
       alt="Monexa — Where software meets substance"
       className={`h-full w-auto object-contain ${imgClassName}`}
-      width={200}
-      height={64}
+      width={650}
+      height={390}
     />
   )
 

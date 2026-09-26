@@ -9,11 +9,11 @@ export default function ProductCard({ product }: { product: Product }) {
       to={`/products/${product.slug}`}
       className="card card-hover group flex flex-col overflow-hidden !p-0"
     >
-      <div className="relative border-b border-ink-100 bg-ink-50/50 p-5">
+      <div className="relative overflow-hidden border-b border-ink-100 bg-ink-50">
         <ProductVisual
           kind={product.slug as 'touchmed24' | 'ledger-and-saldo' | 'the-eye'}
           accent={product.accent}
-          className="h-44 w-full"
+          className="aspect-video h-auto w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
         />
       </div>
       <div className="flex flex-1 flex-col p-6">

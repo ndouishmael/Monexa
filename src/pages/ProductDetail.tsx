@@ -77,11 +77,11 @@ export default function ProductDetail() {
             </div>
 
             <Reveal delay={160}>
-              <div className="rounded-2xl border border-ink-100 bg-white p-4 shadow-[0_30px_80px_-40px_rgba(11,32,53,0.4)]">
+              <div className="overflow-hidden rounded-2xl border border-ink-100 bg-white p-3 shadow-[0_30px_80px_-40px_rgba(11,32,53,0.4)] sm:p-4">
                 <ProductVisual
                   kind={product.slug as 'touchmed24' | 'ledger-and-saldo' | 'the-eye'}
                   accent={product.accent}
-                  className="h-auto w-full"
+                  className="aspect-video h-auto w-full rounded-xl object-contain"
                 />
               </div>
               <div className="mt-3 text-right">

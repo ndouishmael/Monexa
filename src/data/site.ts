@@ -8,7 +8,7 @@ export const site = {
   email: 'info@monexa.co.za',
   foundedYear: 2025,
   location: 'South Africa',
-  logo: '/images/monexa-logo.jpg',
+  logo: '/images/monexa-logo.png',
 }
 
 export const nav = [

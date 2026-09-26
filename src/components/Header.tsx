@@ -70,7 +70,7 @@ export default function Header() {
       </a>
       <div className="container-page">
         <div className="flex h-16 items-center justify-between md:h-20">
-          <Logo className="h-9 md:h-10" imgClassName="mix-blend-multiply" />
+          <Logo className="h-11 md:h-[3.75rem]" imgClassName="drop-shadow-sm" />
 
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
             {nav.map((item) =>
